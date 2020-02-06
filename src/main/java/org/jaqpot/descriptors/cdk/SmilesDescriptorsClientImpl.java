@@ -43,7 +43,7 @@ public class SmilesDescriptorsClientImpl implements SmilesDescriptorsClient {
                         selectedDescsCount++;
                     }
                 }
-                System.out.println("SelectedDesc: "+ selectedDescsCount);
+              //  System.out.println("SelectedDesc: "+ selectedDescsCount);
             }
         }
         Collections.sort(selectedDescriptors, CDKDescUtils.getDescriptorComparator());

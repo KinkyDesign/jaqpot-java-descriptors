@@ -29,9 +29,8 @@
  */
 package org.jaqpot.descriptors.dto.dataset;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import org.jaqpot.descriptors.dto.dataset.Dataset;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Map;
 import java.util.Objects;
@@ -43,8 +42,10 @@ public class FeatureInfo {
     private String URI;
     private String name;
     private String units;
+    private String ont;
     private Map<String, Object> conditions;
     private Dataset.DescriptorCategory category;
+    private String key;
 
     public FeatureInfo() {
     }
@@ -102,6 +103,22 @@ public class FeatureInfo {
         this.category = category;
     }
 
+    public String getOnt() {
+        return ont;
+    }
+
+    public void setOnt(String ont) {
+        this.ont = ont;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -83,7 +83,7 @@ public class DescriptorCalculator  {
         List<String> headerItems = new ArrayList<String>();
         headerItems.add("Title");
 
-        System.out.println(Arrays.toString(headerItems.toArray(new String[]{})));
+        //System.out.println(Arrays.toString(headerItems.toArray(new String[]{})));
 
         elapsedTime = System.currentTimeMillis();
         assert iterReader != null;

@@ -19,8 +19,8 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Path("smiles")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+//@Consumes(MediaType.APPLICATION_JSON)
+//@Produces(MediaType.APPLICATION_JSON)
 public class SmilesDescriptorLegacy {
     private static final Logger LOG = Logger.getLogger(SmilesDescriptorLegacy.class.getName());
 
@@ -30,6 +30,7 @@ public class SmilesDescriptorLegacy {
     @Path("calculate")
     public Response calculate(DescriptorRequest descriptorRequest) {
         try {
+
             ArrayList<String> _categories = new ArrayList<>();
             _categories.add("all");
 
@@ -47,7 +48,7 @@ public class SmilesDescriptorLegacy {
             if (!descriptorRequest.getDataset().getFeatures().isEmpty()) {
                 FeatureInfo featureInfo1 = descriptorRequest.getDataset().getFeatures().iterator().next();
                 for (DataEntry dataEntry : descriptorRequest.getDataset().getDataEntry())
-                    smiles.add((String) dataEntry.getValues().get(featureInfo1.getURI()));
+                    smiles.add((String) dataEntry.getValues().get(featureInfo1.getKey()));
                 sourceName = featureInfo1.getName();
                 sourceURI = featureInfo1.getURI();
             }//or from EntryId
