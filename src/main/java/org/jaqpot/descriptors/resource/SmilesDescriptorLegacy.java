@@ -47,7 +47,7 @@ public class SmilesDescriptorLegacy {
             if (!descriptorRequest.getDataset().getFeatures().isEmpty()) {
                 FeatureInfo featureInfo1 = descriptorRequest.getDataset().getFeatures().iterator().next();
                 for (DataEntry dataEntry : descriptorRequest.getDataset().getDataEntry())
-                    smiles.add((String) dataEntry.getValues().get(featureInfo1.getURI()));
+                    smiles.add((String) dataEntry.getValues().get(featureInfo1.getKey()));
                 sourceName = featureInfo1.getName();
                 sourceURI = featureInfo1.getURI();
             }//or from EntryId

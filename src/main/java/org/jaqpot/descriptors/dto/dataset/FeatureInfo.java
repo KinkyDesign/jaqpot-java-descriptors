@@ -45,6 +45,7 @@ public class FeatureInfo {
     private String units;
     private Map<String, Object> conditions;
     private Dataset.DescriptorCategory category;
+    private String key;
 
     public FeatureInfo() {
     }
@@ -101,6 +102,16 @@ public class FeatureInfo {
     public void setCategory(Dataset.DescriptorCategory category) {
         this.category = category;
     }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+    
+    
 
     @Override
     public int hashCode() {
