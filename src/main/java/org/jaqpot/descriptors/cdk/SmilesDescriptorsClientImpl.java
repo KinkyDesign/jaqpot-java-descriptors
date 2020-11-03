@@ -7,6 +7,7 @@ import org.openscience.cdk.qsar.IDescriptor;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.IOException;
 import java.util.*;
+import javax.swing.tree.TreeNode;
 
 public class SmilesDescriptorsClientImpl implements SmilesDescriptorsClient {
     @Override
@@ -33,17 +34,18 @@ public class SmilesDescriptorsClientImpl implements SmilesDescriptorsClient {
         for (String category:wantedUniqueCategories) {
             int selectedDescsCount = 0;
             if (categories.containsKey(category+"Descriptor")) {
+                
                 System.out.println("WantedDesc: "+categories.get(category+"Descriptor").getLeafCount());
-                Enumeration<DefaultMutableTreeNode> defaultMutableTreeNodeEnumeration = categories.get(category+"Descriptor").depthFirstEnumeration();
+                Enumeration<? extends TreeNode> defaultMutableTreeNodeEnumeration = categories.get(category+"Descriptor").depthFirstEnumeration();
                 while (defaultMutableTreeNodeEnumeration.hasMoreElements()) {
-                    DefaultMutableTreeNode defaultMutableTreeNode = defaultMutableTreeNodeEnumeration.nextElement();
+                    DefaultMutableTreeNode defaultMutableTreeNode = (DefaultMutableTreeNode) defaultMutableTreeNodeEnumeration.nextElement();
                     if(defaultMutableTreeNode.isLeaf()) {
                         DescriptorTreeLeaf aLeaf = (DescriptorTreeLeaf) (defaultMutableTreeNode.getUserObject());
                         selectedDescriptors.add(aLeaf.getInstance());
                         selectedDescsCount++;
                     }
                 }
-              //  System.out.println("SelectedDesc: "+ selectedDescsCount);
+                System.out.println("SelectedDesc: "+ selectedDescsCount);  
             }
         }
         Collections.sort(selectedDescriptors, CDKDescUtils.getDescriptorComparator());
